@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/test;
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #show_sql: true   //운영할 때는 system.out로 sql를 보여주기때문에 쓰지 말아야한다
+        format_sql: true  //sql 이쁘게 보이게
+        default_batch_fetch_size: 100
+
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl

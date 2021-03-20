@@ -1,13 +1,15 @@
 package webSocket.chat.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class ChatMessage {
+    public enum MessageType{
+        JOIN, CHAT, OUT
+    }
 
-    private MsgType type;
-    private String content;
+    private MessageType messageType;
+    private Long roomId;
     private String sender;
+    private String message;
 }
