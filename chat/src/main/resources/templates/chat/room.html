@@ -56,7 +56,7 @@
 <script th:inline="javascript">
     var stompClient = null;
     var roomId = [[${roomId}]];
-    var chat = [[${chatList}]];
+    var chatList = [[${chatList}]];
 
     function setConnected(connected) {
         $("#connect").prop("disabled", connected);
@@ -76,7 +76,9 @@
         stompClient.connect({}, function (frame) {
             setConnected(true);
             console.log('Connected: ' + frame);
-            loadChat(chat)
+            loadChat(chatList)  //저장된 채팅 불러오기
+
+            //구독
             stompClient.subscribe('/room/'+roomId, function (chatMessage) {
                 showChat(JSON.parse(chatMessage.body));
             });
@@ -95,18 +97,23 @@
     function sendChat() {
         stompClient.send("/send/"+roomId, {},
             JSON.stringify({
-                'roomId' : roomId,
                 'sender': $("#sender").val(),
                 'message' : $("#message").val()
             }));
     }
 
-    function loadChat(chat){
-        $("#chatting").append(
-            "<tr><td>" + "[" + chat.sender + "]" + chat.message + "</td></tr>"
-        );
+    //저장된 채팅 불러오기
+    function loadChat(chatList){
+        if(chatList != null) {
+            for(chat in chatList) {
+                $("#chatting").append(
+                    "<tr><td>" + "[" + chatList[chat].sender + "]" + chatList[chat].message + "</td></tr>"
+                );
+            }
+        }
     }
 
+    //보낸 채팅 보기
     function showChat(chatMessage) {
         $("#chatting").append(
             "<tr><td>" + "[" + chatMessage.sender + "]" + chatMessage.message + "</td></tr>"
@@ -125,6 +132,7 @@
 
 </script>
 <script>
+    //창 키면 바로 연결
     window.onload = function (){
         connect();
     }
@@ -132,6 +140,5 @@
     window.BeforeUnloadEvent = function (){
         disconnect();
     }
-
 </script>
 </html>

@@ -49,7 +49,7 @@ public class ChatService {
      * @param message 내용
      */
     public Chat createChat(Long roomId, String sender, String message) {
-        Room room = roomRepository.findById(roomId).orElseThrow();  //방 찾기
+        Room room = roomRepository.findById(roomId).orElseThrow();  //방 찾기 -> 없는 방일 경우 여기서 예외처리
         return chatRepository.save(Chat.createChat(room, sender, message));
     }
 
