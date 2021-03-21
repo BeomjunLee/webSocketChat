@@ -1,5 +1,6 @@
 ## 실시간 채팅 서비스
 
+### STOMP 
 <img src="https://user-images.githubusercontent.com/69130921/111916872-67842700-8ac0-11eb-9ea9-d9a7a84346af.png"><br>
 
 ### 포스팅으로 상세히 확인
