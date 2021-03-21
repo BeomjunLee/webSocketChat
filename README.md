@@ -7,7 +7,7 @@
 2. Controller의 @MessageMapping에 의해 메세지를 받는다.
 
 3. Controller의 @SendTo로 특정 topic을(/1) 구독(/room) 하는 클라이언트에게 메세지를 보낸다.<br>
- ( 구독은 /room 으로 보면되고 특정 topic은 채팅방 id인 /1로 보면된다. -> /room/1 )<br><br>
+ (구독은 /room 으로 보면되고 특정 topic은 채팅방 id인 /1로 보면된다. -> /room/1)<br><br>
  
 ### 포스팅으로 상세히 확인
 https://blog.naver.com/qjawnswkd/222283176175<br>
