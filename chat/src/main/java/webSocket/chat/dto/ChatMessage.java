@@ -1,23 +1,21 @@
 package webSocket.chat.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ChatMessage {
-    public enum MessageType{
-        JOIN, CHAT, OUT
-    }
 
-    private MessageType messageType;
     private Long roomId;
-    private String name;
+    private String sender;
     private String message;
+    private LocalDateTime sendDate;
 
-    public ChatMessage(String name) {
-        this.name = name;
-    }
 }

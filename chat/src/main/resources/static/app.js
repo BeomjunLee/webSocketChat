@@ -1,4 +1,5 @@
 var stompClient = null;
+var roomId = [[${roomId}]];
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -18,7 +19,7 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (chatMessage) {
+        stompClient.subscribe('/room/'+roomId, function (chatMessage) {
             showGreeting(JSON.parse(chatMessage.body));
         });
     });
@@ -33,12 +34,17 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    stompClient.send("/chat/"+roomId, {},
+        JSON.stringify({
+            'roomId' : roomId,
+            'name': $("#name").val(),
+            'message' : $("#message").val()
+        }));
 }
 
 function showGreeting(chatMessage) {
     console.log(chatMessage.name)
-    $("#chatting").append("<tr><td>" + chatMessage.name + "</td></tr>");
+    $("#chatting").append("<tr><td>" + "[" + chatMessage.name + "]" + chatMessage.message + "</td></tr>");
 }
 
 $(function () {

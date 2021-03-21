@@ -1,7 +1,11 @@
 package webSocket.chat.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import webSocket.chat.domain.Room;
+import webSocket.chat.domain.Chat;
 
-public interface ChatRepository extends JpaRepository<Room, Long> {
+import java.util.List;
+
+public interface ChatRepository extends JpaRepository<Chat, Long> {
+
+    List<Chat> findAllByRoomId(Long roomId);
 }
