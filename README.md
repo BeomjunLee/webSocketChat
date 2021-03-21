@@ -2,7 +2,13 @@
 
 ### STOMP 흐름
 <img src="https://user-images.githubusercontent.com/69130921/111916872-67842700-8ac0-11eb-9ea9-d9a7a84346af.png"><br>
+1. 클라이언트(Sender)가 메세지를 보내면 STOMP 통신으로 서버에 메세지가 전달된다.
 
+2. Controller의 @MessageMapping에 의해 메세지를 받는다
+
+3. Controller의 @SendTo로 특정 topic을(/1) 구독(/room) 하는 클라이언트에게 메세지를 보낸다.
+
+( 구독은 /room 으로 보면되고 특정 topic은 채팅방 id인 /1로 보면된다. -> /room/1 )<br>
 ### 포스팅으로 상세히 확인
 https://blog.naver.com/qjawnswkd/222283176175<br>
 
