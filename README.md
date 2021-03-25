@@ -1,6 +1,6 @@
 ## 실시간 채팅 서비스
 
-### STOMP 흐름
+### STOMP 흐름 
 <img src="https://user-images.githubusercontent.com/69130921/111916872-67842700-8ac0-11eb-9ea9-d9a7a84346af.png"><br>
 1. 클라이언트(Sender)가 메세지를 보내면 STOMP 통신으로 서버에 메세지가 전달된다.
 
