@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ChatService {
-    private final ObjectMapper objectMapper;
     private final RoomRepository roomRepository;
     private final ChatRepository chatRepository;
 

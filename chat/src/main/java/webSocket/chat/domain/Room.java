@@ -1,9 +1,6 @@
 package webSocket.chat.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.web.socket.WebSocketSession;
 import webSocket.chat.dto.ChatMessage;
 
@@ -15,6 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
 public class Room {
     @Id
     @GeneratedValue
