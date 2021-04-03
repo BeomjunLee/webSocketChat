@@ -158,3 +158,4 @@ public class ChatController {
 ```
 
 ### Redis 추가중
+채팅 로그 Redis에 
